@@ -1,0 +1,31 @@
+Index: effcee/CMakeLists.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- effcee/CMakeLists.txt	(revision 6fa2a03cebb4fb18fbad086d53d1054928bef54e)
++++ effcee/CMakeLists.txt	(date 1591942004595)
+@@ -5,7 +5,7 @@
+ # We need to expose RE2's StringPiece.
+ target_include_directories(effcee
+   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/.. ${EFFCEE_RE2_DIR})
+-target_link_libraries(effcee PUBLIC re2 ${CMAKE_THREADS_LIB_INIT})
++target_link_libraries(effcee PUBLIC CONAN_PKG::re2 ${CMAKE_THREADS_LIB_INIT})
+ 
+ # TODO(dneto): Avoid installing gtest and gtest_main. ?!
+ install(
+Index: third_party/CMakeLists.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- third_party/CMakeLists.txt	(revision 6fa2a03cebb4fb18fbad086d53d1054928bef54e)
++++ third_party/CMakeLists.txt	(date 1591941996683)
+@@ -39,6 +39,6 @@
+     add_subdirectory(${EFFCEE_RE2_DIR} re2 EXCLUDE_FROM_ALL)
+   endif()
+ endif()
+-if (NOT TARGET re2)
++if (NOT TARGET CONAN_PKG::re2)
+   message(FATAL_ERROR "re2 was not found - required for compilation")
+ endif()
